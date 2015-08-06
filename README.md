@@ -1,6 +1,6 @@
 #tabibito App
 
-##メンバー
+##menber
 ※kenjimorita(JPN)
 
 
