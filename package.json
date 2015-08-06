@@ -87,5 +87,13 @@
     "supertest": "^0.13.0"
   },
   "main": "gulpfile.js",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenjimorita/tabibito.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kenjimorita/tabibito/issues"
+  },
+  "homepage": "https://github.com/kenjimorita/tabibito#readme"
 }
