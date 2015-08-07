@@ -1,5 +1,7 @@
 #tabibito App
 
+<img src="http://kenjimorita.jp/wp-content/uploads/2015/07/image1.jpg" alt="image" width="385" height="256" class="alignnone size-full wp-image-8232" />
+
 ## summary
 This is an application made for traveler.
 When you travel, to use this app,
@@ -17,10 +19,12 @@ App to be world's largest travel site I will release
 etc.. look my many issue, you will know that dream I want to come true
 
 
+<hr />
+
 今日から少しずつ「旅する人」の為のアプリ「tabibito」制作をしよーとおもっています。
 
 
-<img src="http://kenjimorita.jp/wp-content/uploads/2015/07/image1.jpg" alt="image" width="385" height="256" class="alignnone size-full wp-image-8232" />
+
 
 
 勉強の為にAngularとTypescriptを触っていましたが、結局何かサービスを作った方が資産になるし
