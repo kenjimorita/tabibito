@@ -1,6 +1,6 @@
 #tabibito App
 
-<img src="http://kenjimorita.jp/wp-content/uploads/2015/07/image1.jpg" alt="image" width="385" height="256" class="alignnone size-full wp-image-8232" />
+<img src="http://kenjimorita.jp/wp-content/uploads/2015/08/securedownloaddaf.jpeg" alt="securedownloaddaf" width="1080" height="1080" class="alignnone size-full wp-image-8255" />
 
 ## summary
 This is an application made for traveler.
