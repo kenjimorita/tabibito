@@ -1,5 +1,8 @@
+var fs = require("fs");
 var gulp = require("gulp");
-var connect = require("gulp-connect");
+var plumber = require("gulp-plumber");
+var rename = require("gulp-rename");
+// var connect = require("gulp-connect");
 var path = require("path");
 var sass = require("gulp-sass");
 var ejs = require("gulp-ejs");
@@ -9,14 +12,15 @@ var browserSync = require("browser-sync");
 var webpack = require('gulp-webpack');
 var webpackConfig = require('./webpack.config.js');
 
-var path = [
-"./html/**/*.html",
-"./stylesheets/css/**/*.css",
-"./stylesheets/scss/**/*.scss"
-];
+// var path = [
+// "./ejs/**/*.ejs",
+// "./html/**/*.html",
+// "./stylesheets/css/**/*.css",
+// "./stylesheets/scss/**/*.scss"
+// ];
 var target = {
-	local : "./html/*.html",
-	host : "./study/html/"
+	local : "./html/**/*.html"
+	// host : "./study/html/"
 };
 
 gulp.task("sass",function(){
@@ -27,38 +31,46 @@ gulp.task("sass",function(){
 
 gulp.task("ejs", function() {
     gulp.src(
-        ["./ejs/**/*.ejs",'!' + "app/dev/ejs/**/_*.ejs"] //_.ejsは監視しない
+        ["./ejs/**/*.ejs",'!' + "./ejs/**/_*.ejs"] //_.ejsは監視しない
     )
     .pipe(ejs())
-    .pipe(gulp.dest(app/public))
+    .pipe(gulp.dest("./html/index/"))
 });
 
 gulp.task("html",function(){
 	gulp.src('./html/*.html')
 });
-gulp.task("connect", function() {
-	connect.server({
-		// livereload: true,
-		port: 8000
-	});
-});
+// gulp.task("connect", function() {
+// 	connect.server({
+// 		// livereload: true,
+// 		port: 8000
+// 	});
+// });
 
-gulp.task("watch", function() {
-	gulp.watch(path, ['sass','html']);
-});
+// gulp.task('ejs',function(callback){
+// 	gulp.watch(['./ejs/templates/top.ejs','./ejs/template.json'],function(e){
+// 		if(e.type != "deleted"){
+// 			var json = JSON.parse(fs.readFileSync("./ejs/template.json"));
+// 			gulp.src("./ejs/*.ejs")
+// 			.pipe(plumber())
+// 			.pipe(ejs(json))
+// 			.pipe(rename("index.html"))
+// 			.pipe(gulp.dest("./html/"))
+// 		}
+// 	})
+// });
+
 
 // タスクの設定
 gulp.task("browserSyncTask", function () {
     browserSync({
         server: {
-            baseDir: "src" // ルートとなるディレクトリを指定
+            baseDir: "./html/index/" // ルートとなるディレクトリを指定
         }
-    });
-
-    // srcフォルダ以下のファイルを監視
-    gulp.watch("src/**", function() {
-        browserSync.reload();   // ファイルに変更があれば同期しているブラウザをリロード
-    });
+    })
+		gulp.watch('./ejs/**/*.ejs',function(e){
+				browserSync.reload();
+		});
 });
 
 gulp.task('cleanBuild',function(cb){
@@ -87,4 +99,4 @@ gulp.task('build', ['copyIndex'], function (cb) {
 
 
 
-gulp.task("default", ["connect", "watch"]);
+gulp.task("default", ["browserSyncTask"]);
