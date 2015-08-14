@@ -19,7 +19,7 @@ var webpackConfig = require('./webpack.config.js');
 // "./stylesheets/scss/**/*.scss"
 // ];
 var target = {
-	local : "./html/**/*.html"
+	local : "./index/**/*.html"
 	// host : "./study/html/"
 };
 
@@ -37,9 +37,9 @@ gulp.task("ejs", function() {
     .pipe(gulp.dest("./html/index/"))
 });
 
-gulp.task("html",function(){
-	gulp.src('./html/*.html')
-});
+// gulp.task("html",function(){
+// 	gulp.src('./html/*.html')
+// });
 // gulp.task("connect", function() {
 // 	connect.server({
 // 		// livereload: true,
@@ -65,12 +65,9 @@ gulp.task("html",function(){
 gulp.task("browserSyncTask", function () {
     browserSync({
         server: {
-            baseDir: "./html/index/" // ルートとなるディレクトリを指定
+            baseDir: "./src/" // ルートとなるディレクトリを指定
         }
     })
-		gulp.watch('./ejs/**/*.ejs',function(e){
-				browserSync.reload();
-		});
 });
 
 gulp.task('cleanBuild',function(cb){
