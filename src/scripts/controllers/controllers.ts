@@ -1,22 +1,24 @@
-/// <reference path="../../DefinitelyTyped-master/angularjs/angular.d.ts"/>
-/// <reference path="../../DefinitelyTyped-master/jquery/jquery.d.ts"/>
+/// <reference path="../vendor_def/angularjs/angular.d.ts"/>
+/// <reference path="../vendor_def/jQuery/jquery.d.ts"/>
 
-class TodoCtrl{
-	public tabibito : string;
-	public setService:void;
-	constructor(tabibito){
-		this.tabibito = tabibito;
-		console.log(tabibito);
-	}
-	setService(){
-		alert('eeee');
+module tabobito {
+	export	class TodoCtrl{
+		constructor(public serviceConsole, public myValue){
+			this.myValue = myValue;
+			console.log(myValue);
+		}
+		setService():any{
+			console.log('eee')
+		}
 	}
 }
 
 
-var tabibito = angular.module('tabibito', []);
-tabibito.controller('todoCtrl', TodoCtrl)
-.service('tabibito',TodoCtrl.setService);
 
-var eee = new TodoCtrl('fafa');
-console.log(eee);
+var tabibito = angular.module('tabibito',['ngAria'])
+.factory('serviceConsole',function(){
+	return {"value" : "called!service"};
+})
+.value('myValue','myValue');
+
+tabibito.controller('todoCtrl', ['serviceConsole','myValue',tabobito.TodoCtrl])

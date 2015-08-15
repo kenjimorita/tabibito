@@ -15,10 +15,6 @@
         "!./node_modules/**/*.ts"
     ],
     "files": [
-        "./controller_ex.ts",
-        "./controller_internal.ts",
-        "./controllers.ts",
-        "./util/strings_external.ts",
-        "./util/strings_internal.ts"
+        "./common.ts"
     ]
 }

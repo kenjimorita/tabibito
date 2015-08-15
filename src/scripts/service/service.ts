@@ -1,16 +1,9 @@
-/// <reference path="../../DefinitelyTyped-master/angularjs/angular.d.ts"/>
-/// <reference path="../../DefinitelyTyped-master/jquery/jquery.d.ts"/>
+/// <reference path="../vendor_def/angularjs/angular.d.ts"/>
+/// <reference path="../vendor_def/jQuery/jquery.d.ts"/>
 
 
-angular.module('myApp')
-	.factory('bizdata',function(){
-		//ここのスコープは一度しか実行されない
-		var frameworks = ['backbone.js','Ember.js','knockout.js'];
-		return function(){//ここでreturn したオブジェクトがサービスになる
-			return frameworks;
-		};
-	})
-	.factory('JsonData',function($http){
+angular.module('tabibito')
+.factory('JsonData',function($http){
 		return {
 			getSampleData : function(){
 				return $http.get('../data.json')
