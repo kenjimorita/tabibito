@@ -1,21 +1,8 @@
 /// <reference path="../vendor_def/angularjs/angular.d.ts"/>
 /// <reference path="../vendor_def/jQuery/jquery.d.ts"/>
-var mA;
-(function (mA) {
-    var sub = (function () {
-        function sub(fafaService) {
-            this.fafaService = fafaService;
-            this.fafaService.setValue;
-        }
-        return sub;
-    })();
-    mA.sub = sub;
-})(mA || (mA = {}));
-var morit = new mA.sub(['morita', 89]);
-console.log(morit.setValue);
 var tabibito = angular.module('tabibito', ['ngAria']);
 tabibito.service('fafaService', function () {
-    this.values = {};
+    this.values = 'Hi!!We are Service!!';
     this.setValue = function (key, value) {
         this.values[key] = value;
     };
@@ -23,6 +10,20 @@ tabibito.service('fafaService', function () {
         return this.values[key];
     };
 });
-tabibito.controller('sub', ['fafaService', mA.sub]);
-var fafafa = new mA.sub('myservice');
-console.log(fafafa.getValue);
+var mA;
+(function (mA) {
+    var Sub = (function () {
+        function Sub(fafaService) {
+            Sub.$inject = ['fafaService'];
+            console.log(Sub.$inject);
+        }
+        Sub.prototype.func = function () {
+            console.log('fafa');
+        };
+        return Sub;
+    })();
+    mA.Sub = Sub;
+})(mA || (mA = {}));
+var moritaControl = mA.Sub;
+var eee = tabibito.controller('sub', moritaControl);
+console.log(eee);
