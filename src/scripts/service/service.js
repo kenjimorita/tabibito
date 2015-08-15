@@ -1,12 +1,6 @@
-/// <reference path="../../DefinitelyTyped-master/angularjs/angular.d.ts"/>
-/// <reference path="../../DefinitelyTyped-master/jquery/jquery.d.ts"/>
-angular.module('myApp')
-    .factory('bizdata', function () {
-    var frameworks = ['backbone.js', 'Ember.js', 'knockout.js'];
-    return function () {
-        return frameworks;
-    };
-})
+/// <reference path="../vendor_def/angularjs/angular.d.ts"/>
+/// <reference path="../vendor_def/jQuery/jquery.d.ts"/>
+angular.module('tabibito')
     .factory('JsonData', function ($http) {
     return {
         getSampleData: function () {

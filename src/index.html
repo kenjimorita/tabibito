@@ -2,20 +2,23 @@
 <html ng-app="tabibito">
 	<head>
 		<meta charset="utf-8">
-		<script src="./scripts/vendor_js/angular.min.js"></script>
-		<script src="../bower_components/angular-aria/angular-aria.min.js"></script>
-		<script src="./scripts/vendor_js/lodash.min.js"></script>
-		<script src="./scripts/vendor_js/lodash.min.js"></script>
-		<script src="./scripts/controllers/controllers.js"></script>
-		<link rel="stylesheet" type="text/css" href="../../stylesheets/dest/common.css" />
+ 		<script src="./scripts/bower_components/jQuery/dist/jQuery.min.js"></script>
+ 		<script src="./scripts/bower_components/angular/angular.min.js"></script>
+ 		<script src="./scripts/bower_components/angular-aria/angular-aria.min.js"></script>
+		<script src="./scripts/bower_components/lodash/lodash.min.js"></script>
+		<script src="./scripts/controllers/controller_ex.js"></script>
+		<link href="./stylesheets/dest/common.css" rel="stylesheet" type="text/css" />
 		<title>tabibito</title>
 	</head>
 	<body>
-		<div ng-controller="todoCtrl as t">
-			<input type="text" ng-model="tabibito">
-			{{ t.tabibito }}
-
+		<h1>記録しましょう</h1>
+<!-- 		<div ng-controller="todoCtrl as t">
+	<input type="text" ng-model="tabibito">
+	{{ t.tabibito }}
+	<div ng-click="push">push</div>
+</div> -->
+		<div ng-controller="sub">
+			
 		</div>
-
 	</body>
 </html>
