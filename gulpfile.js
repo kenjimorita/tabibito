@@ -39,6 +39,7 @@ gulp.task("ejs", function() {
 
 // gulp.task("html",function(){
 // 	gulp.src('./html/*.html')
+// 	.pipe.
 // });
 // gulp.task("connect", function() {
 // 	connect.server({
@@ -86,12 +87,12 @@ gulp.task('build', ['copyIndex'], function (cb) {
   .pipe(gulp.dest(''));
 });
 
-// gulp.task("reload", function() {
-// 	gulp.src('./html/*.html')
-// 	.pipe(connect.reload());
-// 	gulp.src('./stylesheets/css/*.html')
-// 	.pipe(connect.reload());
-// });
+gulp.task("reload", function() {
+	gulp.src('./html/*.html')
+	.pipe(connect.reload());
+	gulp.src('./stylesheets/css/*.html')
+	.pipe(connect.reload());
+});
 
 
 

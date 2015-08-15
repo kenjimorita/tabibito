@@ -1,7 +1,7 @@
 
 
-angular.module('myApp')
-.directive('hierarcyFast',function(){
+angular.module('tabibito')
+.directive('mainInput',function(){
 	return {
 		template:
 				'<div class="fafa"><li ng-repeat="(key,val) in datas">{{ key }}{{ val }}</li>'
