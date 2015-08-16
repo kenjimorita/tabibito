@@ -1,29 +1,26 @@
 /// <reference path="../vendor_def/angularjs/angular.d.ts"/>
 /// <reference path="../vendor_def/jQuery/jquery.d.ts"/>
-var tabibito = angular.module('tabibito', ['ngAria']);
-tabibito.service('fafaService', function () {
-    this.values = 'Hi!!We are Service!!';
-    this.setValue = function (key, value) {
-        this.values[key] = value;
-    };
-    this.getValue = function (key) {
-        return this.values[key];
-    };
-});
-var mA;
-(function (mA) {
-    var Sub = (function () {
-        function Sub(fafaService) {
-            Sub.$inject = ['fafaService'];
-            console.log(Sub.$inject);
+var myModule;
+(function (myModule) {
+    var Myservice = (function () {
+        function Myservice() {
         }
-        Sub.prototype.func = function () {
-            console.log('fafa');
+        Myservice.prototype.fafa = function () {
+            console.log('eeee');
+        };
+        return Myservice;
+    })();
+    myModule.Myservice = Myservice;
+    var Sub = (function () {
+        function Sub(morita) {
+            this.morita = morita;
+        }
+        Sub.prototype.ccc = function () {
+            console.log(this.morita.fafa());
         };
         return Sub;
     })();
-    mA.Sub = Sub;
-})(mA || (mA = {}));
-var moritaControl = mA.Sub;
-var eee = tabibito.controller('sub', moritaControl);
-console.log(eee);
+    myModule.Sub = Sub;
+    var eeee = angular.module('tabibito', []);
+    eeee.service('morita', Myservice).controller('sub', myModule.Sub);
+})(myModule || (myModule = {}));
