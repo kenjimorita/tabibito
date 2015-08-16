@@ -5,31 +5,23 @@
 // <div ng-controller="sub">
 //
 // </div>
-module mA {
-	export	class sub{
-		getValue:string;
-		setValue:any;
-		constructor(public fafaService:any){
-			this.fafaService.setValue;
-		}
+module myModule {
+export	class Myservice{
+	constructor(){
+	}
+	fafa(){
+		 console.log('eeee');
 	}
 }
-var morit = new mA.sub(['morita',89]);
-console.log(morit.setValue);
-var tabibito = angular.module('tabibito',['ngAria']);
 
+export	class Sub{
+	constructor(public morita){
 
-tabibito.service('fafaService',function(){
-	this.values = {};
-	this.setValue = function (key,value){
-		this.values[key] = value;
-	};
-	this.getValue = function(key){
-		return this.values[key];
 	}
-})
-
-tabibito.controller('sub', ['fafaService',mA.sub]);
-
-var fafafa = new mA.sub('myservice');
-console.log(fafafa.getValue);
+	ccc(){//上で定義しないでもよい
+		 console.log(this.morita.fafa())//controllerにDIされたserviceはこの時点ではthisで参照可能
+	}
+}
+var eeee  = angular.module('tabibito',[])
+eeee.service('morita', Myservice).controller('sub', myModule.Sub);
+}
