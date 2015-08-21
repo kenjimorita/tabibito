@@ -6,22 +6,15 @@
 //
 // </div>
 module myModule {
-export	class Myservice{
-	constructor(){
-	}
-	fafa(){
-		 console.log('eeee');
+	class MyController{
+		public name:string;
+		public age:number;
+		constructor($scope:ngIscpe){
+
+		}	
+
 	}
 }
 
-export	class Sub{
-	constructor(public morita){
-
-	}
-	ccc(){//上で定義しないでもよい
-		 console.log(this.morita.fafa())//controllerにDIされたserviceはこの時点ではthisで参照可能
-	}
-}
-var eeee  = angular.module('tabibito',[])
-eeee.service('morita', Myservice).controller('sub', myModule.Sub);
-}
+var  tabibito = angular.module('tabibito',[]);
+tabibito.controller('myController',myModule.MyController);
