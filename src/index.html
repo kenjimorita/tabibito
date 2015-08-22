@@ -10,56 +10,10 @@
 		<script src="./scripts/controllers/controllers.js"></script>
 		<link href="./stylesheets/dest/common.css" rel="stylesheet" type="text/css" />
 		<title>tabibito</title>
-		<style>
-			.red{
-				background: red;
-			}
-			.green{
-				background: green;
-			}
-			.blue{
-				background: blue;
-			}
-		</style>
 	</head>
 	<body>
-		<h1>Angular独習</h1>
-
+		<h1>Angular独習 input</h1>
 		<div ng-controller="SampleController as c">
- 			<h2>snitrized ng-bind-html</h2>
- 			<div ng-bind-html="c.memo"></div><!-- サニタイズされたng-bind-html -->
-			<div ng-bind-template="{{c.memo}}"></div>
-
-			<h2>one-time-binding</h2>
-			<button ng-click="c.onclick()">名前を入れて押す</button><!-- ワンタイムバインディング -->
-			<input ng-model="::c.hell" type="text">{{::c.hell}}
-
-			<h2>ng-binding</h2>
-			<button ng-click="c.onclick()">名前を入れて押す</button><!-- ワンタイムバインディング -->
-			<div>{{c.greeting}}</div>
-
-			<h2>ng-repeat</h2>
-			<ul>
-				<li ng-repeat="name in c.menber">{{$index}}/{{name.namae | filter : kenji2 }}{{name.age}}{{name.living}}</li>
-			</ul>
-
-			<h2>change ClassName by ng-click </h2>
-			<form>
-				<label for="name">名前</label>
-				<input type="text" id="name" name="name" ng-model="c.myName" />
-				<button ng-click="myStyle='red'">赤</button>
-				<button ng-click="myStyle='green'">緑</button>
-				<button ng-click="myStyle='blue'">青</button>
-				<div ng-class="myStyle"><p>スタイルを付与する</p></div>
-			</form>
-			<h2>ng-if</h2>
-			<label for="if">押してください</label>
-			<input type="checkbox" name="if" ng-model="show">
-			<div id="show" ng-if="show">表示の場合</div>
-			<ul>
-				<li ng-repeat="name in c.menber">{{name.namae}}</li>
-				<li ng-repeat="book in c.books">{{book.value}}</li>
-			</ul>
 
 		</div>
 </div>
