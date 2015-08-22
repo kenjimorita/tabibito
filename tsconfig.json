@@ -34,7 +34,7 @@
     "files": [
         "./src/scripts/bower_components/angular-ui-router/api/angular-ui-router.d.ts",
         "./src/scripts/bower_components/typescript-compile/demo/demo.ts",
-        "./src/scripts/controllers/controller_external.ts",
+        "./src/scripts/controllers/controller_ex.ts",
         "./src/scripts/controllers/controller_internal.ts",
         "./src/scripts/controllers/controllers.ts",
         "./src/scripts/controllers/util/strings_external.ts",
