@@ -31,7 +31,7 @@ module tabibitoModule {
 				{"namae" : "kenji7" , "age" : 30 , "living" : "kuki"},
 				{"namae" : "kenji8" , "age" : 20 , "living" : "kawasaki"},
 				{"namae" : "kenji9" , "age" : 40 , "living" : "meguro"}
-			],
+			];
 			books = [
 				'ふぁふぁふぁふぁふぁふぁふぁふぁふぁふぁふぁふぁ',
 				'repeat1repeat1repeat1repeat1',

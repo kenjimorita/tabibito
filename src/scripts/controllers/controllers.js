@@ -21,6 +21,14 @@ var tabibitoModule;
                 { "namae": "kenji8", "age": 20, "living": "kawasaki" },
                 { "namae": "kenji9", "age": 40, "living": "meguro" }
             ];
+            this.books = [
+                'ふぁふぁふぁふぁふぁふぁふぁふぁふぁふぁふぁふぁ',
+                'repeat1repeat1repeat1repeat1',
+                'repeat1repeat1repeat1repeat1',
+                'repeat2repeat2repeat2repeat2',
+                'repeat3repeat3repeat3repeat3',
+                'ふぁふぁふぁふぁふぁふぁふぁふぁふぁふぁふぁふぁ'
+            ];
             this.myName = 'morita';
             this.greeting = 'さんこんにちは!';
             this.onclick = function () {
