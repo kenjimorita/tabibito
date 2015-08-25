@@ -35,5 +35,8 @@
     "angular-bootstrap": "~0.13.3",
     "ngtoast": "~1.5.5",
     "angular-i18n": "~1.4.4"
+  },
+  "devDependencies": {
+    "angular-message-format": "~1.4.4"
   }
 }
