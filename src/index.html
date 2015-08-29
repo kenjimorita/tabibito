@@ -1,21 +1,43 @@
 <!DOCTYPE html>
-<html ng-app="tabibito">
+<html ng-app="myApp">
 	<head>
 		<meta charset="utf-8">
  		<script src="./scripts/bower_components/jQuery/dist/jQuery.min.js"></script>
  		<script src="./scripts/bower_components/angular/angular.min.js"></script>
+ 		<script src="./scripts/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
  		<script src="./scripts/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
  		<script src="./scripts/bower_components/angular-message-format/angular-message-format.min.js"></script>
 		<script src="./scripts/bower_components/lodash/lodash.min.js"></script>
-		<script src="./scripts/controllers/controllers.js"></script>
+		<script src="./scripts/controllers/extra/extra.js"></script>
 		<link href="./stylesheets/dest/common.css" rel="stylesheet" type="text/css" />
 		<title>tabibito</title>
 	</head>
-	<body>
-		<h1>Angular独習 input</h1>
-		<div ng-controller="SampleController as c">
+	<body ng-controller="SampleController as c">
+		<input type="checkbox" name="check"><label for="check" ng-click="filter()">有効だけ表示する</label>
+		<h2>リスト</h2>
+		<ul>
+			<!-- <li ng-repeat="c.data">fafafa</li> -->
 
-		</div>
-</div>
+		</ul>
+		<div>
+			<h2>Factoryからリスト取得</h2>
+			<ul><!-- ここではプロパティを指定するだけにする。コントローラ側でリストを取得その返値を仮引数mydataに入れてviewでアクセスする-->
+				<li ng-repeat="mydata in c.getedFactory.data"><!-- Factory list-->
+				{{mydata.namae}}
+				{{$index}}
+				</li>
+			</ul>
+			<h2>Serviceからリストを取得</h2>
+			<ul>
+				<li ng-repeat="faf in c.getedService.data"><!-- Service list-->
+				{{faf.namae}}
+				{{$index}}
+				</li>
+			</ul>
+		<!-- {{myData.data}}
+		{{AppTitle}}
+		{{AppInfo}}
+		{{CommonProc()}} -->
+	</div>
 	</body>
 </html>
