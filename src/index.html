@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html>
 	<head>
 		<meta charset="utf-8">
  		<script src="./scripts/bower_components/jQuery/dist/jQuery.min.js"></script>
@@ -12,32 +12,35 @@
 		<link href="./stylesheets/dest/common.css" rel="stylesheet" type="text/css" />
 		<title>tabibito</title>
 	</head>
-	<body ng-controller="SampleController as c">
-		<input type="checkbox" name="check"><label for="check" ng-click="filter()">有効だけ表示する</label>
-		<h2>リスト</h2>
-		<ul>
-			<!-- <li ng-repeat="c.data">fafafa</li> -->
 
-		</ul>
-		<div>
-			<h2>Factoryからリスト取得</h2>
-			<ul><!-- ここではプロパティを指定するだけにする。コントローラ側でリストを取得その返値を仮引数mydataに入れてviewでアクセスする-->
-				<li ng-repeat="mydata in c.getedFactory.data"><!-- Factory list-->
-				{{mydata.namae}}
-				{{$index}}
-				</li>
-			</ul>
-			<h2>Serviceからリストを取得</h2>
+	<body ng-app="myApp">
+	<div ng-controller="SampleController as c">
+			<input type="checkbox" name="check" mg-model="checked"><label for="check" ng-init="checked=true">only yes , toggle yes & no</label>
+			<h2>filter list </h2>
 			<ul>
-				<li ng-repeat="faf in c.getedService.data"><!-- Service list-->
-				{{faf.namae}}
-				{{$index}}
-				</li>
+				<!-- <li ng-repeat="c.data">fafafa</li> -->
+
 			</ul>
-		<!-- {{myData.data}}
-		{{AppTitle}}
-		{{AppInfo}}
-		{{CommonProc()}} -->
-	</div>
-	</body>
+			<div>
+				<h2>from get FactoryFunction</h2>
+				<ul><!-- ここではプロパティを指定するだけにする。コントローラ側でリストを取得その返値を仮引数mydataに入れてviewでアクセスする-->
+					<li ng-if="checked" ng-repeat="mydata in c.getedFactory.data"><!-- Factory list-->
+					{{mydata.namae}}
+					{{$index}}
+					</li>
+				</ul>
+				<h2>from get ServiceFunction</h2>
+				<ul>
+					<li ng-if="checked" ng-repeat="faf in c.getedService.data"><!-- Service list-->
+					{{faf.namae}}
+					{{$index}}
+					</li>
+				</ul>
+			<!-- {{myData.data}}
+			{{AppTitle}}
+			{{AppInfo}}
+			{{CommonProc()}} -->
+		</div>
+	  </div>
+		</body>
 </html>
