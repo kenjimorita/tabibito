@@ -1,5 +1,7 @@
 /// <reference path="../vendor_def/angularjs/angular.d.ts"/>
 /// <reference path="../vendor_def/jQuery/jquery.d.ts"/>
+import dddd from './test';
+
 
 
 angular.module('tabibito')
@@ -17,6 +19,8 @@ angular.module('tabibito')
 	})
 	.factory('sum',function(){
 		return function(){
+			let fafa;
+			const fafaee = 'fafafa';
 			return{'hoge' : 0,'fuga' : 0,'sum'  : 0}
 		}
 	});
