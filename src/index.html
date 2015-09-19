@@ -10,24 +10,23 @@
 		<script src="./scripts/bower_components/lodash/lodash.min.js"></script>
 		<script src="./scripts/controllers/extra/extra.js"></script>
 		<link href="./stylesheets/dest/common.css" rel="stylesheet" type="text/css" />
+		<link href="/favicon.ico" type="image/x-icon" rel="icon" />
 		<title>tabibito</title>
 	</head>
 
 	<body ng-app="myApp">
-	  <div ng-controller="SampleController as c">
-	    <input type="checkbox" name="check" ng-model="checked">
-    <l1abel for="check" ng-init="checked=true">only yes , toggle yes & no</label>
-	    <div>filter list </div>
-	    <div>
-	      <div>from get ServiceFunction</div>
-	      <ul>
-
-	        <li ng-if="checked" ng-repeat="fafa in c.getedService.data ">
-	          <!-- Service list-->
-	          {{fafa.namae}}
-	        </li>
-	      </ul>
-	    </div>
+	<div ng-controller="SampleController as c">
+			<input type="checkbox" name="check" mg-model="checked"><label for="check" ng-init="checked=true">only yes , toggle yes & no</label>
+			<div>filter list </div>
+			<div>
+				<h2>from get ServiceFunction</h2>
+				<ul>
+					<li ng-if="checked" ng-repeat="faf in c.getedService.data"><!-- Service list-->
+					{{faf.namae}}
+					{{$index}}
+					</li>
+				</ul>
+		</div>
 	  </div>
 	</body>
 </html>
