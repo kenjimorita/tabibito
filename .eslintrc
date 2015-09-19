@@ -1,8 +1,7 @@
-
 {
-"env" : {
-"es6: true,
- "node": true
+  "env": {
+    "es6": true,
+    "node": true
   },
   "rules": {
     "no-reserved-keys": 2,
@@ -92,40 +91,5 @@
   },
   "ecmaFeatures": {
     "modules": true
-  }
-}
-v": {
-"browser": true,
-    "node": true
-  },
-  "rules": {
-    "curly": 1,
-    "eqeqeq": 1,
-    "no-multi-spaces": false,
-    "no-underscore-dangle": false,
-    "quotes": [1, "single"],
-    "strict" : false
-  },
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-    "binaryLiterals": true,
-    "blockBindings": true,
-    "classes": true,
-    "defaultParams": true,
-    "forOf": true,
-    "generators": true,
-    "modules": true,
-    "objectLiteralComputedProperties": true,
-    "objectLiteralDuplicateProperties": true,
-    "objectLiteralShorthandMethods": true,
-    "objectLiteralShorthandProperties": true,
-    "octalLiterals": true,
-    "regexUFlag": true,
-    "regexYFlag": true,
-    "superInFunctions": true,
-    "templateStrings": true,
-    "unicodeCodePointEscapes": true,
-    "globalReturn": true,
-    "jsx": true
   }
 }
