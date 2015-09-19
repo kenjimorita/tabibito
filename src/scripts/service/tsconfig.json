@@ -13,6 +13,7 @@
     "filesGlob": [
         "./**/*.ts",
         "!./node_modules/**/*.ts"
+        "!./src/scripts/vendor_def/**"
     ],
     "files": [
         "./service.ts",

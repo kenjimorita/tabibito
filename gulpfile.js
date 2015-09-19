@@ -14,6 +14,7 @@ var webpack = require('gulp-webpack');
 var webpackConfig = require('./webpack.config.js');
 var typescript = require('gulp-typescript');
 var concat = require('gulp-concat');
+var eslint = require('gulp-eslint');
 
 // var path = [
 // "./ejs/**/*.ejs",
@@ -39,6 +40,9 @@ var config = {
     }
 };
 
+gulp.task('notify',function(){
+
+})
 gulp.task('typescriptCompile', function () {
 	return gulp.src(config.ts.src)
 	.pipe(typescript(config.ts.options))
@@ -47,6 +51,19 @@ gulp.task('typescriptCompile', function () {
 	.pipe(gulp.dest(config.ts.dst));
 });
 
+gulp.task('lint',function(){
+	return gulp.src(
+		[
+			'./src/scripts/**/*.js',
+			'!**/node_modules/**',
+			'!./node_modules/**',
+			'!./src/scripts/vendor_def/**',
+			'!./src/scripts/bower_components/**'
+	])
+	.pipe(eslint())
+	.pipe(eslint.format())
+	.pipe(eslint.failOnError());
+})
 
 
 gulp.task("ejs", function() {
@@ -110,10 +127,11 @@ gulp.task("sass",function(){
 
 gulp.task("watch",function(){
 	gulp.watch('./src/stylesheets/**/*.scss',['sass']);
-	gulp.watch('./release/js/**/*.js',['browserSyncTask']);
+	gulp.watch('./*.js',function(event){gulp.run('lint')});
+	gulp.watch('./release/js/**/*.js');
 });
 
 
 
 
-gulp.task("default", ["browserSyncTask","watch"]);
+gulp.task("default", ["browserSyncTask","typescriptCompile","watch"]);
