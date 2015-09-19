@@ -35,7 +35,7 @@ var config = {
 						'!./src/scripts/vendor_def/**',
 						'!./src/scripts/bower_components/**'
         ],
-        dst: './release/js/',
+        dst: './src/release/js/',
         options: { target: 'ES5', module: 'commonjs' }
     }
 };
