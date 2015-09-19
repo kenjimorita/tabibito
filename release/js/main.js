@@ -1,9 +1,3 @@
-/// <reference path="../vendor_def/angularjs/angular.d.ts"/>
-/// <reference path="../vendor_def/jQuery/jquery.d.ts"/>
-//
-// <div ng-controller="sub">
-//
-// </div>
 var myModule;
 (function (myModule) {
     var MyController = (function () {
@@ -17,8 +11,6 @@ tabibito.controller('myController', myModule.MyController);
 
 
 
-/// <reference path="../vendor_def/angularjs/angular.d.ts"/>
-/// <reference path="../vendor_def/jQuery/jquery.d.ts"/>
 var tabibitoModule;
 (function (tabibitoModule) {
     var TabibitoClass = (function () {
@@ -51,8 +43,17 @@ angular.module('tabibito')
     };
 });
 
-/// <reference path="../vendor_def/angularjs/angular.d.ts"/>
-/// <reference path="../vendor_def/jQuery/jquery.d.ts"/>
+var Test = (function () {
+    function Test() {
+    }
+    Test.prototype.testFunc = function () {
+        console.log('ffaaa');
+    };
+    return Test;
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Test;
+
 angular.module('tabibito')
     .factory('JsonData', function ($http) {
     return {
@@ -69,6 +70,8 @@ angular.module('tabibito')
 })
     .factory('sum', function () {
     return function () {
+        var fafa;
+        var fafaee = 'fafafa';
         return { 'hoge': 0, 'fuga': 0, 'sum': 0 };
     };
 });
