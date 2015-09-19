@@ -7,7 +7,7 @@ module tabibitoModule {
 	export interface TIfafa{
 	}
 	export class TabibitoClass implements TIfafa{
-			
+
 	}
 }
 var tabibito = angular.module('tabibito',['ngSanitize','ngMessageFormat']);

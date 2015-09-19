@@ -11,7 +11,7 @@ module myModule {
 		public age:number;
 		constructor($scope:ngIscpe){
 
-		}	
+		}
 
 	}
 }

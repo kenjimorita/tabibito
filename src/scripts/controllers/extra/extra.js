@@ -55,7 +55,7 @@ myApp.service('filterDateService', ['myData', function(myData) {
 }]);
 myApp.filter('myFilter',function(){
 	if(this.checked){
-		return data.status.match(/yes/);
+		return data.status["no"]
 	}
 })
 myApp.controller('SampleController', ['filterDateService',
