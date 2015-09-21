@@ -1,23 +1,16 @@
-var myModule;
-(function (myModule) {
-    var MyController = (function () {
-        function MyController($scope) {
-        }
-        return MyController;
-    })();
-})(myModule || (myModule = {}));
+"use strict";
+class MyController {
+}
+let faf = 'eeeee';
 var tabibito = angular.module('tabibito', []);
-tabibito.controller('myController', myModule.MyController);
+tabibito.controller('myController', MyController);
 
 
 
 var tabibitoModule;
 (function (tabibitoModule) {
-    var TabibitoClass = (function () {
-        function TabibitoClass() {
-        }
-        return TabibitoClass;
-    })();
+    class TabibitoClass {
+    }
     tabibitoModule.TabibitoClass = TabibitoClass;
 })(tabibitoModule || (tabibitoModule = {}));
 var tabibito = angular.module('tabibito', ['ngSanitize', 'ngMessageFormat']);
@@ -43,16 +36,12 @@ angular.module('tabibito')
     };
 });
 
-var Test = (function () {
-    function Test() {
-    }
-    Test.prototype.testFunc = function () {
+class Test {
+    testFunc() {
         console.log('ffaaa');
-    };
-    return Test;
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = Test;
+    }
+}
+export default Test;
 
 angular.module('tabibito')
     .factory('JsonData', function ($http) {
@@ -70,20 +59,18 @@ angular.module('tabibito')
 })
     .factory('sum', function () {
     return function () {
-        var fafa;
-        var fafaee = 'fafafa';
+        let fafa;
+        const fafaee = 'fafafa';
         return { 'hoge': 0, 'fuga': 0, 'sum': 0 };
     };
 });
 
-function trimLeft(str) {
+export function trimLeft(str) {
     return str.replace(/^¥s+/, '');
 }
-exports.trimLeft = trimLeft;
-function trimRight(str) {
+export function trimRight(str) {
     return str.replace(/^¥s+/, '');
 }
-exports.trimRight = trimRight;
 
 var app;
 (function (app) {
