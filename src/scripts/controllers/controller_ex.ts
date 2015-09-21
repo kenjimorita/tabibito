@@ -1,13 +1,11 @@
-module myModule {
+"use strict";
+
 	class MyController{
 		public name:string;
-		public age:number;
-		constructor($scope:ngIscpe){
-
-		}
-
+		public age:string;
+		public morita: string;
 	}
-}
+let faf = 'eeeee';
 
 var  tabibito = angular.module('tabibito',[]);
-tabibito.controller('myController',myModule.MyController);
+tabibito.controller('myController',MyController);
