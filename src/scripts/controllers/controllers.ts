@@ -1,3 +1,6 @@
+/// <reference path="../../../typings/tsd.d.ts" />
+
+
 
 module tabibitoModule {
 	// export interface ITodo {

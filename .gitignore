@@ -10,7 +10,6 @@
 node_modules
 atlassian-ide-plugin.xml
 /bower_components
-/src/scripts/bower_components
 /vendor_def
 *.log
 /artifact

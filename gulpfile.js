@@ -18,20 +18,16 @@ var concat = require('gulp-concat');
 var eslint = require('gulp-eslint');
 var runSequence = require('run-sequence');
 
-var target = {
-	local : "./index/**/*.html"
-};
-
 var config = {
     ts : {
         src: [
-            './src/scripts/**/*.ts',       // プロジェクトのルート以下すべてのディレクトリの.tsファイルを対象とする
-            '!./node_modules/**', // node_modulesは対象外
+            './src/scripts/**/*.ts', // Ts file in the root all of the following directory the target
+            '!./node_modules/**',
 						'!./src/scripts/vendor_def/**',
 						'!./src/scripts/bower_components/**'
         ],
-        dst: './src/release/js/',
-        options: { target: 'ES6', module: 'commonjs' }
+        dst: './published/js/',
+        options: { target: 'ES5', module: 'commonjs' }
     }
 };
 
@@ -62,7 +58,7 @@ gulp.task('lint',function(){
 gulp.task('babel', function() {
   gulp.src('./*.es6')
     .pipe(babel())
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest('./published/js/'))
 });
 
 
@@ -70,14 +66,14 @@ gulp.task('jade', function () {
     gulp.src(['./src/jade/**/*.jade','!./src/jade/**/_*.jade'])
 				.pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
         .pipe(jade())
-        .pipe(gulp.dest('./src/release/'));
+        .pipe(gulp.dest('./'));
 });
 
 
 gulp.task("browserSyncTask", function () {
     browserSync({
         server: {
-            baseDir: "./src/" // ルートとなるディレクトリを指定
+            baseDir: "./" // root
         }
     })
 });
@@ -88,7 +84,7 @@ gulp.task('reloadServer', function () {
 gulp.task("sass",function(){
 	gulp.src(['./src/stylesheets/**/*.scss'])
 	.pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
-	.pipe(sass()).pipe(gulp.dest('./release/css/'))
+	.pipe(gulp.dest('./published/css/'))
 	.pipe(reloadServer());
 });
 
@@ -100,7 +96,7 @@ gulp.task("watch",function(){
 	gulp.watch('./src/scripts/controllers/**/*.ts',['typescriptCompile']);
 	gulp.watch('./src/scripts/**/*.es6',['babel']);
 	gulp.watch('./src/jade/**/*.jade',['jade','reloadServer']);
-	gulp.watch('./src/release/js/**/*.js',['js']);
+	gulp.watch('./published/js/**/*.js',['js']);
 });
 
 

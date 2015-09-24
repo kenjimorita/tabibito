@@ -10,6 +10,7 @@ tabibito.controller('myController', MyController);
 
 
 
+/// <reference path="../../../typings/tsd.d.ts" />
 var tabibitoModule;
 (function (tabibitoModule) {
     var TabibitoClass = (function () {
@@ -42,17 +43,7 @@ angular.module('tabibito')
     };
 });
 
-var Test = (function () {
-    function Test() {
-    }
-    Test.prototype.testFunc = function () {
-        console.log('ffaaa');
-    };
-    return Test;
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = Test;
-
+/// <reference path="../../../typings/tsd.d.ts" />
 angular.module('tabibito')
     .factory('JsonData', function ($http) {
     return {
@@ -74,6 +65,8 @@ angular.module('tabibito')
         return { 'hoge': 0, 'fuga': 0, 'sum': 0 };
     };
 });
+
+
 
 function trimLeft(str) {
     return str.replace(/^¥s+/, '');

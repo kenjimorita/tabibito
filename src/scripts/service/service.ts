@@ -1,6 +1,4 @@
-/// <reference path="../vendor_def/angularjs/angular.d.ts"/>
-/// <reference path="../vendor_def/jQuery/jquery.d.ts"/>
-import dddd from './test';
+/// <reference path="../../../typings/tsd.d.ts" />
 
 
 
