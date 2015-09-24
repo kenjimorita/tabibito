@@ -34,7 +34,6 @@ var config = {
 gulp.task('typescriptCompile', function (callback) {
 	gulp.src(config.ts.src).pipe(typescript(config.ts.options))
 	.js
-	.pipe(concat("main.es6"))
 	.pipe(gulp.dest(config.ts.dst));
 	runSequence('lint','babel','reloadServer',callback)
 });
