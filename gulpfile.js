@@ -4,39 +4,77 @@ var plumber = require("gulp-plumber");
 var connect = require("gulp-connect");
 var rename = require("gulp-rename");
 var notify = require("gulp-notify");
+var browserify = require('browserify');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var gutil = require('gulp-util');
+var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
+var ts = require('gulp-typescript');
+
+
+var babelify = require('babelify');
 var path = require("path");
 var sass = require("gulp-sass");
 var jade = require("gulp-jade");
 var babel = require("gulp-babel");
-var gutil = require("gulp-util");
 var ftp = require("gulp-ftp");
 var browserSync = require("browser-sync");
 var webpack = require('gulp-webpack');
 var webpackConfig = require('./webpack.config.js');
-var typescript = require('gulp-typescript');
 var concat = require('gulp-concat');
 var eslint = require('gulp-eslint');
 var runSequence = require('run-sequence');
 
-var config = {
-    ts : {
-        src: [
-            './src/scripts/**/*.ts', // Ts file in the root all of the following directory the target
-            '!./node_modules/**',
-						'!./src/scripts/vendor_def/**',
-						'!./src/scripts/bower_components/**'
-        ],
-        dst: './published/js/',
-        options: { target: 'ES5', module: 'commonjs' }
-    }
-};
 
-gulp.task('typescriptCompile', function (callback) {
-	gulp.src(config.ts.src).pipe(typescript(config.ts.options))
-	.js
-	.pipe(gulp.dest(config.ts.dst));
-	runSequence('lint','babel','reloadServer',callback)
+
+
+
+
+
+gulp.task('scripts', function() {
+  var tsconfig = require("./tsconfig.json");
+  var filesGLob = tsconfig.filesGlob;
+  return gulp.src(filesGLob)
+      .pipe(ts(tsconfig.compilerOptions))
+      .pipe(gulp.dest('lib'));
 });
+gulp.task('build', ["scripts"], function(){
+  var b = browserify({
+    entries: './lib/index.js',
+    debug: false,
+  });
+  return b.bundle()
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+        // Add transformation tasks to the pipeline here.
+        .pipe(uglify())
+        .on('error', gutil.log)
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./build/'));
+});
+
+
+
+
+
+
+
+
+// gulp.task('script', function (callback) {
+// 	gulp.src(config.ts.src).pipe(typescript(config.ts.options))
+// 	.js
+// 	.pipe(concat("main.es6"))
+// 	.pipe(gulp.dest(config.ts.dst));
+// 	runSequence('lint','babel','reloadServer',callback)
+// });
+
+
+
+
+
 
 gulp.task('lint',function(){
 	return gulp.src(
@@ -87,16 +125,14 @@ gulp.task("sass",function(){
 	.pipe(reloadServer());
 });
 
-gulp.task('build', ['js', 'css'], function() {});
-
 
 gulp.task("watch",function(){
 	gulp.watch('./src/stylesheets/**/*.scss',['sass']);
-	gulp.watch('./src/scripts/controllers/**/*.ts',['typescriptCompile']);
+	gulp.watch('./src/scripts/**/*.ts',['scripts']);
 	gulp.watch('./src/scripts/**/*.es6',['babel']);
 	gulp.watch('./src/jade/**/*.jade',['jade','reloadServer']);
 	gulp.watch('./published/js/**/*.js',['js']);
 });
 
 
-gulp.task("default", ["browserSyncTask","typescriptCompile","watch"]);
+gulp.task("default", ["browserSyncTask","scripts","watch"]);

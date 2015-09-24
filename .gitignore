@@ -17,3 +17,5 @@ atlassian-ide-plugin.xml
 /index.html
 /published/js/**/*js
 *.css
+/build/
+/lib/

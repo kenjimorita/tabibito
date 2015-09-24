@@ -1,45 +1,22 @@
 {
-    "version": "1.5.0-alpha",
+    "version": "1.6.2",
     "compilerOptions": {
-        "target": "es6",
+        "target": "es5",
         "module": "commonjs",
-        "declaration": false,
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "removeComments": true,
-        "noLib": false,
         "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true
+        "outDir": "../lib/",
+        "sourceMap": true
     },
-    "formatCodeOptions": {
-        "indentSize": 4,
-        "tabSize": 4,
-        "newLineCharacter": "\r\n",
-        "convertTabsToSpaces": true,
-        "insertSpaceAfterCommaDelimiter": true,
-        "insertSpaceAfterSemicolonInForStatements": true,
-        "insertSpaceBeforeAndAfterBinaryOperators": true,
-        "insertSpaceAfterKeywordsInControlFlowStatements": true,
-        "insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
-        "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
-        "placeOpenBraceOnNewLineForFunctions": true,
-        "placeOpenBraceOnNewLineForControlBlocks": true
-    },
-    "compileOnSave": false,
     "filesGlob": [
-        "./src/scripts/**/*.ts",
-        "!./node_modules/**/*.ts",
-        "!./bower_components/**/*.ts",
-        "!./typings/**/*.ts"
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
     ],
     "files": [
-        "./src/scripts/controllers/controller_ex.ts",
-        "./src/scripts/controllers/controller_internal.ts",
         "./src/scripts/controllers/controllers.ts",
         "./src/scripts/controllers/util/strings_external.ts",
         "./src/scripts/controllers/util/strings_internal.ts",
-        "./src/scripts/directive/common.ts",
-        "./src/scripts/models/model.d.ts",
-        "./src/scripts/service/service.ts",
-        "./src/scripts/service/test.ts",
+        "./src/scripts/controllers/test.ts"
     ]
 }
