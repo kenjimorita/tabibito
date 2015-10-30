@@ -4,6 +4,12 @@ html
 		meta(charset="utf-8")
 		title tabibito
 		link(rel="stylesheet",href="src/stylesheets/dest/common.css")
-		script(src="build/bundle.js")
+		script(src="bower_components/jQuery/dist/jQuery.min.js")
+		script(src="bower_components/angular/angular.min.js")
+		script(src="bower_components/angular-ui-router/release/angular-ui-router.min.js")
+		script(src="bower_components/angular-sanitize/angular-sanitize.min.js")
+		script(src="bower_components/angular-message-format/angular-message-format.min.js")
+		script(src="bower_components/lodash/lodash.min.js")
+		script(src="./build/bundle.js")
 		body(ng-app="tabibito")
 			include ./layout/_content
