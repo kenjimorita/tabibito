@@ -3,12 +3,11 @@
 
 
 module tabibitoModule {
-	// export interface ITodo {
-	// }
-	export interface TIfafa{
-	}
-	export class TabibitoClass implements TIfafa{
-
+	export class TabibitoClass{
+		public name : string = "fafa";
+		constructor(){
+			this.name = name;
+		}
 	}
 }
 var tabibito = angular.module('tabibito',['ngSanitize','ngMessageFormat']);

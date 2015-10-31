@@ -1,8 +1,8 @@
 //設定ファイルを作成すればコマンドで引数を渡す必要がない
 module.exports= {
-	entry : './main.js',//このファイルのrequireを辿っていく
+	entry : './dist/js/main.js',//このファイルのrequireを辿っていく
 	output: {
-		path: __dirname,
+		path: './published/js',
 		filename: 'bundle.js'//全てまとめたファイルがここに出力される
 	},
 	devtool: 'inline-source-map',//デバック用のツールが使える。
@@ -11,7 +11,8 @@ module.exports= {
 	//http://webpack.github.io/docs/configuration.html#module-loaders
 		loaders: [//ファイルがある条件を満たしていたらローダーで変換される
 					//今回は*.jsxをjsxコンパイラに通すようにする
-			{test: /\.jsx$/,loader: 'jsx-loader'}
+			{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+			{ test: /\.html$/, exclude: /node_modules/, loader: 'babel-loader' }
 		]
 	},
 	resolve: {

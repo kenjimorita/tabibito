@@ -16,7 +16,14 @@ var webpackConfig = require('./webpack.config.js');
 var typescript = require('gulp-typescript');
 var concat = require('gulp-concat');
 var eslint = require('gulp-eslint');
+var tslint = require('gulp-tslint');
 var runSequence = require('run-sequence');
+var requireDir = require('require-dir');
+///////////////////////ts to js
+///
+///
+requireDir('./gulp/tasks', { recurse: true });
+
 
 var config = {
     ts : {
@@ -26,17 +33,37 @@ var config = {
 						'!./src/scripts/vendor_def/**',
 						'!./src/scripts/bower_components/**'
         ],
-        dst: './published/js/',
-        options: { target: 'ES5', module: 'commonjs' }
+        dst: './dist/js/',
     }
 };
-
-gulp.task('typescriptCompile', function (callback) {
-	gulp.src(config.ts.src).pipe(typescript(config.ts.options))
-	.js
-	.pipe(gulp.dest(config.ts.dst));
-	runSequence('lint','babel','reloadServer',callback)
+var typescriptProject = typescript.createProject({
+  target: 'es6',
+  removeComments:true,
+  sortOutput:true,
+  module: 'commonjs'
 });
+gulp.task('typescriptCompile', function(){
+	gulp.src(config.ts.src)
+  //差分コンパイル、起点となるファイル名を渡す
+    .pipe(typescript(typescriptProject,{referencedFrom: ['controllers.ts']}))//TODO:(機転を作る)
+    //jsプロパティを参照
+    .js
+    .pipe(concat(".es6"))
+  	.pipe(gulp.dest(config.ts.dst));
+  	// runSequence('lint','babel','reloadServer',callback)
+});
+
+
+///////////////////////tsLint TODO:(コンパイル時移植)
+///
+gulp.task("tslint",function(){
+  gulp.src(config.ts.src)
+  .pipe(plumber({errorHandler: notify.onError('Error: TSLint!!')}))
+  .pipe(tslint({configuration: "tasks/tslint.json"}))
+  .pipe(tslint.report("verbose"));
+});
+//TODO:loader
+
 
 gulp.task('lint',function(){
 	return gulp.src(
@@ -55,8 +82,12 @@ gulp.task('lint',function(){
 })
 
 gulp.task('babel', function() {
-  gulp.src('./*.es6')
-    .pipe(babel())
+  gulp.src('./dist/js/*.js')
+    .pipe(babel({
+      optional: ['runtime'],//TODO(ジェネレーター対策) http://smart.ataglance.jp/2015-10-22-transpile-typescript-generator-to-es5/
+      plugins: ['source-map-support'] //:TODO(install)
+    }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./published/js/'))
 });
 
@@ -91,12 +122,12 @@ gulp.task('build', ['js', 'css'], function() {});
 
 
 gulp.task("watch",function(){
-	gulp.watch('./src/stylesheets/**/*.scss',['sass']);
-	gulp.watch('./src/scripts/controllers/**/*.ts',['typescriptCompile']);
-	gulp.watch('./src/scripts/**/*.es6',['babel']);
-	gulp.watch('./src/jade/**/*.jade',['jade','reloadServer']);
-	gulp.watch('./published/js/**/*.js',['js']);
+	watch('./src/stylesheets/**/*.scss',['sass']);
+	watch('./src/scripts/controllers/**/*.ts',['typescriptCompile']);
+	watch('./src/scripts/**/*.es6',['babel']);
+	watch('./src/jade/**/*.jade',['jade','reloadServer']);
+	watch('./published/js/**/*.js',['js']);
 });
 
 
-gulp.task("default", ["browserSyncTask","typescriptCompile","watch"]);
+gulp.task("default", ["watch","typescriptCompile"]);
